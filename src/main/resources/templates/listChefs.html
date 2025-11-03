@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Restaurant Chefs - Welcome to Our Restaurant</title>
+    <style type="text/css">
+        body {
+            width: 800px;
+            margin: auto;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Welcome to Our Restaurant</h1>
+</header>
+<main>
+    <h2>Choose a chef:</h2>
+    <form action="/dish" method="POST">
+        <!-- Display radio buttons for each chef,
+             the value should be the chef id
+             and the displayed text should be:
+             Name: <firstName> <lastName>, Bio: <bio> -->
+<!--        <input type="radio" name="chefId" value="1"> Chef 1 <br/>-->
+<!--        <input type="radio" name="chefId" value="2"> Chef 2 <br/>-->
+<!--        <input type="radio" name="chefId" value="3"> Chef 3 <br/>-->
+<!--        <input-->
+<!--            th:each="chef: ${chefs}" type="radio" name="chefId" th:value="${chef.id}" style="white-space: pre"-->
+<!--            th:utext="'Name: ' + ${chef.firstName} + ' ' ${chef.lastName}+ ',Bio: ' + ${chef.bio} + '<br/>'"-->
+<!--        />-->
+        <div th:each="chef : ${chefs}">
+            <input type="radio" name="chefId" th:value="${chef.id}"/>
+            <span th:text="|Name: ${chef.firstName} ${chef.lastName}|"></span><br/>
+            <span th:text="|Bio: ${chef.bio}|"></span>
+            <br/><br/>
+        </div>
+
+        <input type="submit" value="Submit">
+    </form>
+</main>
+</body>
+</html>
