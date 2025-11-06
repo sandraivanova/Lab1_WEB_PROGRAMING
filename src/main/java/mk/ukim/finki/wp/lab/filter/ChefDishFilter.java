@@ -38,8 +38,14 @@ public class ChefDishFilter implements Filter {
                 return;
             }
         } else if (chefDetailsRuta.equals(path)) {
-            // Tuka dojde ako patekata e /chefDetails i prave proverka koj metod e dali get/post
-            if ("GET".equalsIgnoreCase(method)) {
+            // Tuka dojde ako patekata e /chefDetails i prave proverka koj metod
+            // se koriste
+            // GET - koga ke sakam da dodadam dish i da se prikaze chefDetails.html za chefot
+            // POST - koga od listata na dishovi izberam nekoj dish da go dodadam na chefot
+            String tipNaBaranjeGET = "GET";
+            // Tuka dole provere dalie get koga sakam da ode na listata ako e ulezez i provere
+            // ako ne otide dole deka e za post i naprave proverka dali se tocni parametrite
+            if (method.equalsIgnoreCase(tipNaBaranjeGET)) {
                 // Tuka provere dali ke odeme da gi prikaze dishovite na shefo dali ima id za nego
                 String chefId = req.getParameter("chefId");
                 if (chefId == null || chefId.isBlank()) {
