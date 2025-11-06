@@ -39,14 +39,21 @@ public class ChefDishFilter implements Filter {
             }
         } else if (chefDetailsRuta.equals(path)) {
             String chefId = req.getParameter("chefId");
-            String dishId = req.getParameter("dishId");
 
-            // Do tuka ako mi treba samo chefId - primer koga iodam direktno na details
-            if (chefId == null || chefId.isBlank()) {
+            // Tuka koga sakame da prikze detalite za chefot i dishovite ako nema id vraka nazad
+            if (chefId == null) {
+                System.out.println("Entere");
                 resp.sendRedirect(prvataStrnaSoSiteChefs);
                 return;
             }
+            String dishId = req.getParameter("dishId");
 
+            // Tuka koga sakame da dodademe dish na chefot i ako nema parametri vraka nazad
+            if (dishId == null && chefId == null) {
+                System.out.println("Entere");
+                resp.sendRedirect(prvataStrnaSoSiteChefs);
+                return;
+            }
         }
         // Na kraj ako se e ok samo mine niz filterot i se produzuva kako sto treba da si rabote
         chain.doFilter(request, response);
