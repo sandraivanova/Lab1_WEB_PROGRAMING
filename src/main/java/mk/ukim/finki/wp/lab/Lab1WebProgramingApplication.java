@@ -10,6 +10,7 @@ public class Lab1WebProgramingApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(Lab1WebProgramingApplication.class, args);
+        System.out.println("Testing commits");
     }
 
 }
