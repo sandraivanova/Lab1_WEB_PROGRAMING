@@ -38,29 +38,11 @@ public class ChefDishFilter implements Filter {
                 return;
             }
         } else if (chefDetailsRuta.equals(path)) {
-            // Tuka dojde ako patekata e /chefDetails i prave proverka koj metod
-            // se koriste
-            // GET - koga ke sakam da dodadam dish i da se prikaze chefDetails.html za chefot
-            // POST - koga od listata na dishovi izberam nekoj dish da go dodadam na chefot
-            String tipNaBaranjeGET = "GET";
-            // Tuka dole provere dalie get koga sakam da ode na listata ako e ulezez i provere
-            // ako ne otide dole deka e za post i naprave proverka dali se tocni parametrite
-            if (method.equalsIgnoreCase(tipNaBaranjeGET)) {
-                // Tuka provere dali ke odeme da gi prikaze dishovite na shefo dali ima id za nego
-                String chefId = req.getParameter("chefId");
-                if (chefId == null || chefId.isBlank()) {
-                    resp.sendRedirect(prvataStrnaSoSiteChefs);
-                    return;
-                }
-            } else {
-                // Tuka dojde koga e post koga za chefo dodademe dish za koj treba da imame id na chefot i dishot
-                // vo patekata
-                String chefId = req.getParameter("chefId");
-                String dishId = req.getParameter("dishId");
-                if (chefId == null || chefId.isBlank() || dishId == null || dishId.isBlank()) {
-                    resp.sendRedirect(prvataStrnaSoSiteChefs);
-                    return;
-                }
+            String chefId = req.getParameter("chefId");
+            String dishId = req.getParameter("dishId");
+            if (chefId == null || chefId.isBlank() || dishId == null || dishId.isBlank()) {
+                resp.sendRedirect(prvataStrnaSoSiteChefs);
+                return;
             }
         }
         // Na kraj ako se e ok samo mine niz filterot i se produzuva kako sto treba da si rabote
