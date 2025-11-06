@@ -40,7 +40,15 @@ public class ChefDishFilter implements Filter {
         } else if (chefDetailsRuta.equals(path)) {
             String chefId = req.getParameter("chefId");
             String dishId = req.getParameter("dishId");
-            if (chefId == null || chefId.isBlank() || dishId == null || dishId.isBlank()) {
+
+            // Do tuka ako mi treba samo chefId - primer koga iodam direktno na details
+            if (chefId == null || chefId.isBlank()) {
+                resp.sendRedirect(prvataStrnaSoSiteChefs);
+                return;
+            }
+
+            //Do tuka ako mi treba i dishId - primer koga se dodava
+            if (dishId == null || dishId.isBlank()) {
                 resp.sendRedirect(prvataStrnaSoSiteChefs);
                 return;
             }
