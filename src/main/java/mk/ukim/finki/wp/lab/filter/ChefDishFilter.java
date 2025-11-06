@@ -47,11 +47,6 @@ public class ChefDishFilter implements Filter {
                 return;
             }
 
-            //Do tuka ako mi treba i dishId - primer koga se dodava
-            if (dishId == null || dishId.isBlank()) {
-                resp.sendRedirect(prvataStrnaSoSiteChefs);
-                return;
-            }
         }
         // Na kraj ako se e ok samo mine niz filterot i se produzuva kako sto treba da si rabote
         chain.doFilter(request, response);
